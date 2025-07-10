@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnuvardhan Reddy - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lato:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key
+            emailjs.init({
+                publicKey: "T1cgNxnwr87qZP35w",
+            });
+        })();
+    </script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #d6d0d0; /* Very Dark Gray/Near Black */
+            color: #e2e8f0; /* Light Gray */
+            line-height: 1.6;
+        }
+
+        .section-padding {
+            padding: 80px 0; /* Increased padding for better spacing */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Gradient Text for Name and Headings */
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #a855f7, #3b82f6); /* Indigo, Purple, Blue */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Custom font for the name in nav bar */
+        .nav-name-font {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700; /* Bold for professionalism */
+            letter-spacing: 0.03em; /* Slightly increased letter spacing */
+        }
+
+        /* Custom font for the name in home section (more impactful) */
+        .hero-name-font {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900; /* Extra bold for impact */
+            letter-spacing: 0.05em; /* Slightly increased letter spacing */
+        }
+
+        /* Navigation Link Hover Effect */
+        .nav-link:hover {
+            color: #a855f7; /* Purple */
+            transform: translateY(-2px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Button Hover Effect */
+        .btn-primary {
+            background-image: linear-gradient(to right, #6366f1, #a855f7); /* Indigo to Purple */
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(168, 85, 247, 0.4); /* Purple shadow */
+            background-image: linear-gradient(to left, #6366f1, #a855f7); /* Reverse gradient on hover */
+        }
+
+        /* Card Hover Effect */
+        .card {
+            background-color: #1a1a1a; /* Darker background for cards */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            border-radius: 12px; /* More rounded corners */
+            border: 1px solid rgba(100, 116, 139, 0.3); /* Subtle border */
+        }
+        .card:hover {
+            transform: translateY(-3px); /* Subtle lift */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Softer, darker shadow */
+            border-color: #a855f7; /* Purple border on hover */
+            background-color: #252525; /* Slightly lighter dark background */
+        }
+
+        /* Social Icon Hover Effect */
+        .social-icon {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            color: #94a3b8; /* Grayish blue for subtlety */
+        }
+        .social-icon:hover {
+            color: #a855f7; /* Purple */
+            transform: scale(1.2); /* Slightly larger */
+        }
+
+        /* Focus styles for form inputs */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #a855f7; /* Purple border on focus */
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3); /* Purple ring on focus */
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typing effect cursor */
+        .typing-text::after {
+            content: '|';
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-right-color: transparent }
+            50% { border-right-color: white }
+        }
+
+        /* Neon Hover Effect for About Section (Minimized) */
+        .neon-hover-section {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative; /* Needed for pseudo-element glow */
+            z-index: 1; /* Ensure it's above other elements if necessary */
+            border-radius: 12px; /* Consistent with other cards/sections */
+        }
+
+        .neon-hover-section::before {
+            content: '';
+            position: absolute;
+            top: -2px; /* Minimized blur spread */
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #a855f7, #3b82f6); /* Purple to Blue glow */
+            filter: blur(4px); /* Minimized neon blur effect */
+            z-index: -1; /* Behind the content */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+            border-radius: 12px; /* Match section border-radius */
+        }
+
+        .neon-hover-section:hover {
+            transform: translateY(-2px); /* Minimized lift on hover */
+            box-shadow: 0 5px 10px rgba(168, 85, 247, 0.1); /* Minimized subtle section shadow */
+        }
+
+        .neon-hover-section:hover::before {
+            opacity: 0.2; /* Minimized glow on hover */
+        }
+
+        /* About section paragraph styling for better screen fit */
+        .about-text-paragraph {
+            max-width: 100%; /* Ensure paragraphs take full width of container */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px; /* Add some horizontal padding for readability on very wide screens */
+        }
+        /* Specific hover effect for paragraphs within About section */
+        .about-text-paragraph:hover {
+            color: #a855f7; /* Change text color on hover */
+            transition: color 0.2s ease-in-out;
+        }
+
+        /* Certificates section specific styles */
+        .certificates-grid {
+            display: grid;
+            grid-auto-flow: column; /* Arrange items in a row */
+            grid-auto-columns: minmax(280px, 1fr); /* Min width for cards, allows flexibility */
+            gap: 24px; /* Space between cards */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            scroll-snap-type: x mandatory; /* Snap to cards when scrolling */
+            padding-bottom: 20px; /* Space for scrollbar */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+
+        .certificate-card {
+            scroll-snap-align: start; /* Align card to start of scroll area */
+            flex-shrink: 0; /* Prevent cards from shrinking */
+            min-width: 280px; /* Ensure minimum width */
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Push content apart */
+            height: 100%; /* Ensure cards fill height of row */
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px); /* Slide up effect */
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.3); /* Glowing shadow */
+            border-color: #a855f7; /* Purple border on hover */
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    
+
+    <!-- Navigation Bar -->
+
+    <header class="bg-black/80 backdrop-blur-md fixed w-full z-50 shadow-lg py-4">
+        <nav class="container flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold gradient-text nav-name-font">Vishnuvardhan Reddy</a>
+            <div class="flex space-x-6 md:space-x-10 text-lg">
+                <a href="#home" class="nav-link text-gray-300 hover:text-purple-400">Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-purple-400">About</a>
+                <a href="#education" class="nav-link text-gray-300 hover:text-purple-400">Education</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-purple-400">Skills</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-purple-400">Projects</a>
+                <a href="#certificates" class="nav-link text-gray-300 hover:text-purple-400">Certificates</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-purple-400">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="section-padding min-h-screen flex items-center justify-center text-center bg-gradient-to-br from-black to-gray-900">
+        <div class="container">
+            <img src="vishnu.html.jpg" alt="Vishnuvardhan Reddy" class="rounded-full w-48 h-48 mx-auto mb-6 object-cover border-4 border-purple-500 shadow-xl">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-white">
+                Hi, I'm <span class="gradient-text hero-name-font">Vishnuvardhan Reddy</span>!
+            </h1>
+            
+            
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto border-r-4 border-white inline-block pr-1 typing-text" id="typing-text">
+                <!-- Text will be typed here by JavaScript -->
+            </p>
+            <div class="flex justify-center space-x-6 mb-12">
+                <a href="https://www.linkedin.com/in/vishnu-vardhan-reddy-b10631290" class="social-icon text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin text-3xl"></i></a>
+                <a href="https://github.com/Vishnureddy257" class="social-icon text-gray-400 hover:text-gray-200"><i class="fab fa-github text-3xl"></i></a>
+                <a href="https://www.instagram.com/vishnureddy0320?igsh=MTNmdXl1YWFoeWJvOQ==" class="social-icon text-gray-400 hover:text-red-500"><i class="fab fa-instagram text-3xl"></i></a>
+                <a href="https://x.com/vardhan_re18185" class="social-icon text-gray-400 hover:text-blue-400"><i class="fab fa-twitter text-3xl"></i></a>
+            </div>
+            <a href="https://drive.google.com/file/d/1W_Yq8VQnCMquTCSPogIpvbrRhfFVUzGw/view?usp=drivesdk " class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl inline-block">
+                Resume 
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-gray-900 neon-hover-section mx-auto my-12">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-8 gradient-text">About Me</h2>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed about-text-paragraph mb-4">
+                I am <span class="font-semibold text-purple-400">Vishnuvardhan Reddy</span>, currently pursuing my B.Tech in Computer Science and Engineering at <span class="font-semibold text-blue-400">Dr. MGR Educational and Research Institute</span>, in <span class="font-semibold text-green-400">Computer Science And Engineering</span>. My journey in technology is driven by a strong passion for building innovative and impactful web applications.
+            </p>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed about-text-paragraph mb-4">
+                I thrive on learning new technologies and solving complex problems. I am also proficient in various programming languages, including Python (with DSA), <br> C++, and JavaScript.
+            </p>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed about-text-paragraph">
+                I am dedicated to continuous improvement and am always eager to contribute to projects that push the boundaries of what's possible in the digital world. I'm a learner who always interested to explore and learn new skills and build experience with my own creative ideas 💡.
+            </p>
+            
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-padding bg-black">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-12 gradient-text">Education</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-8 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Bachelor of Technology (CSE)</h3>
+                    <p class="text-lg text-gray-300 mb-2">Dr. MGR Educational and Research Institute</p>
+                    <p class="text-md text-gray-400 mb-4">2022 - 2026 </p>
+                    <p class="text-xl font-bold text-green-400">8 CGPA</p>
+                </div>
+                <div class="card p-8 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Intermediate (MPC)</h3>
+                    <p class="text-lg text-gray-300 mb-2">Sri Narayana Jr Collage</p>
+                    <p class="text-md text-gray-400 mb-4">2020 - 2022 </p>
+                    <p class="text-xl font-bold text-green-400">97%</p>
+                </div>
+                <div class="card p-8 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4">High School</h3>
+                    <p class="text-lg text-gray-300 mb-2">Sri Vasavi High School</p>
+                    <p class="text-md text-gray-400 mb-4">Completed in 2020</p>
+                    <p class="text-xl font-bold text-green-400">10 CGPA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-gray-900">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-12 gradient-text">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Category: Web Development -->
+                <div class="card p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-laptop-code mr-2 text-purple-400"></i>Web Development</h3>
+                    <ul class="text-lg text-gray-300 space-y-2 text-left ml-4 list-disc list-inside">
+                        <li>Full Stack Web Development</li>
+                        
+                    </ul>
+                </div>
+                <!-- Skill Category: Programming Languages -->
+                <div class="card p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-code mr-2 text-purple-400"></i>Programming Languages</h3>
+                    <ul class="text-lg text-gray-300 space-y-2 text-left ml-4 list-disc list-inside">
+                        <li>Python (DSA in Java)</li>
+                        <li>C++</li>
+                        <li>JavaScript</li>
+                        
+                    </ul>
+                </div>
+                <!-- Skill Category: Frameworks -->
+                <div class="card p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-cube mr-2 text-purple-400"></i>Frameworks</h3>
+                    <ul class="text-lg text-gray-300 space-y-2 text-left ml-4 list-disc list-inside">
+                        <li>FastApi</li>
+                        
+                        <li>Flask</li>
+                        
+                    </ul>
+                </div>
+                <!-- Skill Category: Databases -->
+                <div class="card p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-database mr-2 text-purple-400"></i>Databases</h3>
+                    <ul class="text-lg text-gray-300 space-y-2 text-left ml-4 list-disc list-inside">
+                        <li>MongoDB</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <!-- Add more skill categories or individual skills here if needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-black">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-12 gradient-text">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1: Netflix Clone -->
+                <div class="card p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Netflix Clone</h3>
+                    <img src="netflix.jpg" alt="Netflix Clone Project" class="w-full h-48 object-cover rounded-md mb-4">
+                    <p class="text-lg text-gray-300 mb-4">
+                        A front-end Netflix clone replicating core functionalities like user sign-in, browsing, and video playback (using dummy data/placeholders). Built with HTML And CSS.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-purple-400 hover:text-purple-300 font-medium hover:underline"><i class="fas fa-external-link-alt mr-1"></i> Live Demo</a>
+                        <a href="#" class="text-purple-400 hover:text-purple-300 font-medium hover:underline"><i class="fab fa-github mr-1"></i> GitHub Repo</a>
+                    </div>
+                </div>
+
+                
+
+                <!-- Project Card 3: Stock Price Prediction with LSTM -->
+                <div class="card p-6 shadow-lg">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Stock Price Prediction (LSTM)</h3>
+                    <img src="stock.html.jpg" alt="Stock Price Prediction Project" class="w-full h-48 object-cover rounded-md mb-4">
+                    <p class="text-lg text-gray-300 mb-4">
+                        Using ML in Python project utilizing Long Short-Term Memory (LSTM) neural networks to predict future stock prices based on historical data.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://colab.research.google.com/drive/1fMjtrDKzvxezjFUL0GYHWp5y291E3sVw" class="text-purple-400 hover:text-purple-300 font-medium hover:underline"><i class="fas fa-external-link-alt mr-1"></i> Live Demo</a>
+                        <a href="https://github.com/CharanGoude/lstm-Stock-Prediction" class="text-purple-400 hover:text-purple-300 font-medium hover:underline"><i class="fab fa-github mr-1"></i> GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="section-padding bg-gray-900">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-12 gradient-text">Certificates</h2>
+            <div class="certificates-grid">
+                <!-- Certificate Card 1 -->
+                <div class="certificate-card">
+                    <img src="https://placehold.co/300x200/4a0e6e/ffffff?text=AWS+Cert" alt="AWS Certificate" class="w-fulAWSl h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">AWS Cloud Practitioner Essentials</h3>
+                    <p class="text-sm text-gray-400 mb-4">Issued by [AWS Skill Builder]</p>
+                    <a href="https://drive.google.com/file/d/1DOh5aywb9byX536ktg0KtkRFIDcUjPIp/view?usp=sharing" class="text-purple-400 hover:text-purple-300 font-medium hover:underline mt-auto"> View Certificate</a>
+                </div>
+
+                <!-- Certificate Card 2 -->
+                <div class="certificate-card">
+                    <img src="https://placehold.co/300x200/4a0e6e/ffffff?text=Python+Cert" alt="Python Certificate" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Python Essentials 1</h3>
+                    <p class="text-sm text-gray-400 mb-4">Issued by [CISCO Networking Academy]</p>
+                    <a href="https://drive.google.com/file/d/1JUEQ_kEhaMqJZPdKNqZG6bcU9DmaWaup/view?usp=sharing" class="text-purple-400 hover:text-purple-300 font-medium hover:underline mt-auto"><i class="fas fa-external-link-alt mr-1"></i> View Certificate</a>
+                </div>
+
+                <!-- Certificate Card 3 -->
+                <div class="certificate-card">
+                    <img src="https://placehold.co/300x200/4a0e6e/ffffff?text=CCNAv7+Cert" alt=" CCNAv7 Certificate" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Introduction to Networks</h3>
+                    <p class="text-sm text-gray-400 mb-4">Issued by [CISCO Networking Academy]</p>
+                    <a href="https://drive.google.com/file/d/1fS9nc_ymiofI5CNKod7UgMPhwpfdbksj/view?usp=sharing" class="text-purple-400 hover:text-purple-300 font-medium hover:underline mt-auto"><i class="fas fa-external-link-alt mr-1"></i> View Certificate</a>
+                </div>
+
+                <!-- Certificate Card 4 -->
+                <div class="certificate-card">
+                    <img src="https://placehold.co/300x200/4a0e6e/ffffff?text=Cyber security+Cert" alt="Introduction to Cybersecurity Certificate" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Introduction to Cybersecurity</h3>
+                    <p class="text-sm text-gray-400 mb-4">Issued by [Cisco Networking Academy]</p>
+                    <a href="https://drive.google.com/file/d/1JWG1FGVc9Gz383deJrIhA1NhRWW0dda0/view?usp=sharing" class="text-purple-400 hover:text-purple-300 font-medium hover:underline mt-auto"><i class="fas fa-external-link-alt mr-1"></i> View Certificate</a>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gray-900">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-12 gradient-text">Get In Touch</h2>
+            <div class="max-w-2xl mx-auto bg-black p-8 rounded-lg shadow-lg card">
+                <p class="text-lg text-gray-300 mb-6">
+                    Feel free to reach out to me for collaborations, questions, or just to say hello!
+                </p>
+                <form class="space-y-6">
+                    <div>
+                        <input type="text" id="name" name="name" placeholder="Your Name"
+                               class="w-full p-3 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:ring-purple-500 focus:border-purple-500">
+                    </div>
+                    <div>
+                        <input type="email" id="email" name="email" placeholder="Your Email"
+                               class="w-full p-3 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:ring-purple-500 focus:border-purple-500">
+                    </div>
+                    <div>
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message"
+                                  class="w-full p-3 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:ring-purple-500 focus:border-purple-500"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+                <div class="mt-8 text-gray-400">
+                    <p class="mb-2"><i class="fas fa-envelope mr-2"></i> vishnuvardhanr257@gmail.com</p>
+                    <p><i class="fas fa-phone mr-2"></i> +91 9963510933</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-8 text-center text-gray-400">
+        <div class="container">
+            <p>&copy; 2025 Vishnuvardhan Reddy. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://www.linkedin.com/in/vishnu-vardhan-reddy-b10631290" class="social-icon text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://github.com/Vishnureddy257" class="social-icon text-gray-400 hover:text-gray-200"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://www.instagram.com/vishnureddy0320?igsh=MTNmdXl1YWFoeWJvOQ==" class="social-icon text-gray-400 hover:text-red-500"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="https://x.com/vardhan_re18185" class="social-icon text-gray-400 hover:text-blue-400"><i class="fab fa-twitter text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for Typing Effect
+        const roles = ["Full Stack Web Developer", "MERN Stack Enthusiast", "Problem Solver"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        const typingElement = document.getElementById("typing-text");
+
+        function type() {
+            if (!typingElement) return; // Exit if element not found
+
+            if (charIndex < roles[roleIndex].length) {
+                typingElement.textContent += roles[roleIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100); // Typing speed
+            } else {
+                setTimeout(erase, 1500); // Pause before erasing
+            }
+        }
+
+        function erase() {
+            if (!typingElement) return; // Exit if element not found
+
+            if (charIndex > 0) {
+                typingElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50); // Erasing speed
+            } else {
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(type, 750); // Pause before next word
+            }
+        }
+        // EmailJS Integration
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = 'Sending message...';
+            formMessage.className = 'mt-4 text-center text-sm font-medium text-gray-400';
+
+            // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS IDs
+            emailjs.sendForm('service_htq2vha', 'template_9jv3rdi', this)
+                .then(() => {
+                    formMessage.textContent = 'Message sent successfully!';
+                    formMessage.className = 'mt-4 text-center text-sm font-medium text-green-500';
+                    this.reset(); // Clear the form
+                }, (error) => {
+                    formMessage.textContent = 'Failed to send message. Please try again later.';
+                    formMessage.className = 'mt-4 text-center text-sm font-medium text-red-500';
+                    console.error('EmailJS Error:', error);
+                });
+        });
+
+        // Start typing effect when the DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typingElement) {
+                type();
+            }
+        });
+    </script>
+</body>
+</html>
